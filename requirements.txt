@@ -1,0 +1,9 @@
+# Game runtime
+pygame>=2.6
+
+# Card-import tool (tools/import_cards.py) — not needed to play
+anthropic>=0.40
+pillow>=10
+
+# Tests
+pytest>=8

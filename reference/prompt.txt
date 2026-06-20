@@ -1,0 +1,16 @@
+There is a phyical puzzle game named "Rush Hour" - https://en.wikipedia.org/wiki/Rush_Hour_(puzzle) - please create a 
+  detailed implementation plan to build a digital version of this game with PyGame.  Visually, this should be an        
+  isometric "2.5D" perspective with vehicles matching the original colors/length/type of the original game, described   
+  in `reference/vehicles.md`.  Please also develop an import tool which can construct the initial placement and         
+  solution-sequence dataset for all the puzzles in the game from scans or photos of the fronts and backs of the game    
+  cards.  So that you can develop this import tool, I put some sample puzzle playing card photos in the reference/      
+  subdirectory within this directory.  The game comes with a set of these cards, one for each level, and they contain   
+  the starting arrangement of the pieces as well as a solution sequence for that level on the back of the card.  For    
+  the interaction model, please allow the user to click and drag a vehicle puzzle piece to move it to a new position,   
+  to simply click the piece if there's only one valid position to move that piece to.  There should be an undo button   
+  in the UI that can be clicked to go back in the current sequence, as well as a move counter in the HUD and a move log 
+  in the same format as the solution sequence on the back of the cards (e.g. RL2 PU1 CU1 HR1 DD1) at the bottom of the  
+  HUD in a small font, and this move log should append with each move made (and shrink with undo operations).  When     
+  the prime vehicle (labeled "X" in the solution sequences) drives out of the exit, there should be a fun               
+  particle-system fireworks animation celebrating the success, then a summary UI element should explain the number of   
+  moved, the minimum-solution number of moves and give the player a score based on that.

@@ -1,0 +1,80 @@
+{
+  "id": 1,
+  "level": "Beginner",
+  "grid": {
+    "rows": 6,
+    "cols": 6,
+    "exit": {
+      "row": 2,
+      "side": "right"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "X",
+      "row": 2,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "A",
+      "row": 0,
+      "col": 2,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "O",
+      "row": 0,
+      "col": 3,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "C",
+      "row": 1,
+      "col": 3,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "D",
+      "row": 1,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "Q",
+      "row": 3,
+      "col": 2,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "E",
+      "row": 3,
+      "col": 5,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "F",
+      "row": 5,
+      "col": 3,
+      "len": 2,
+      "orient": "H"
+    }
+  ],
+  "printed_solution": [
+    "QL2",
+    "CD2",
+    "DD2",
+    "XR5"
+  ],
+  "min_moves": 4,
+  "source": {
+    "note": "Designed and BFS-verified (no card photo)."
+  }
+}

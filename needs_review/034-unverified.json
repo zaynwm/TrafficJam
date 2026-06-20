@@ -1,0 +1,32 @@
+{
+  "_validation": "QUARANTINED: hand-transcribed. Printed solution replays legally for 22 of 43 moves then fails at move 23 (QR2) and BFS finds the board unsolvable, so the layout has placement errors. Re-import via tools/import_cards.py (Claude vision) to produce a solver-validated version.",
+  "id": 34,
+  "level": "Expert",
+  "grid": { "rows": 6, "cols": 6, "exit": { "row": 2, "side": "right" } },
+  "vehicles": [
+    { "id": "X", "row": 2, "col": 0, "len": 2, "orient": "H" },
+    { "id": "A", "row": 0, "col": 0, "len": 2, "orient": "V" },
+    { "id": "R", "row": 0, "col": 3, "len": 3, "orient": "H" },
+    { "id": "B", "row": 1, "col": 3, "len": 2, "orient": "V" },
+    { "id": "P", "row": 1, "col": 4, "len": 3, "orient": "V" },
+    { "id": "C", "row": 2, "col": 5, "len": 2, "orient": "V" },
+    { "id": "Q", "row": 3, "col": 0, "len": 3, "orient": "H" },
+    { "id": "D", "row": 3, "col": 3, "len": 2, "orient": "V" },
+    { "id": "E", "row": 4, "col": 2, "len": 2, "orient": "V" },
+    { "id": "F", "row": 4, "col": 4, "len": 2, "orient": "H" },
+    { "id": "I", "row": 5, "col": 0, "len": 2, "orient": "H" },
+    { "id": "H", "row": 5, "col": 3, "len": 2, "orient": "H" }
+  ],
+  "printed_solution": [
+    "RL2", "PU1", "CU1", "HR1", "DD1",
+    "QR3", "XR1", "AD3", "XL1", "EU3",
+    "IR1", "AD1", "QL3", "PD1", "RL1",
+    "BU1", "DU2", "FL3", "DD2", "BD1",
+    "RR3", "EU1", "QR2", "XR1", "AU4",
+    "XL1", "ED1", "RL2", "PU1", "IL1",
+    "FL1", "QR1", "ED3", "QL3", "DU1",
+    "HL1", "PD3", "CU1", "XR1", "AD1",
+    "RL1", "BU1", "XR5"
+  ],
+  "min_moves": null
+}

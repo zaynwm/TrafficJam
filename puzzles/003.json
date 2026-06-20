@@ -1,0 +1,113 @@
+{
+  "id": 3,
+  "level": "Advanced",
+  "grid": {
+    "rows": 6,
+    "cols": 6,
+    "exit": {
+      "row": 2,
+      "side": "right"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "X",
+      "row": 2,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "A",
+      "row": 0,
+      "col": 0,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "B",
+      "row": 0,
+      "col": 2,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "O",
+      "row": 0,
+      "col": 3,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "C",
+      "row": 1,
+      "col": 3,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "D",
+      "row": 1,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "Q",
+      "row": 3,
+      "col": 1,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "E",
+      "row": 3,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "F",
+      "row": 5,
+      "col": 2,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "R",
+      "row": 3,
+      "col": 5,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "G",
+      "row": 4,
+      "col": 0,
+      "len": 2,
+      "orient": "V"
+    }
+  ],
+  "printed_solution": [
+    "XL1",
+    "BD1",
+    "OL2",
+    "DU1",
+    "QL1",
+    "ED1",
+    "FL1",
+    "CD3",
+    "RU3",
+    "QR3",
+    "BD2",
+    "XR3",
+    "BU2",
+    "QL1",
+    "RD3",
+    "XR3"
+  ],
+  "min_moves": 16,
+  "source": {
+    "note": "Designed and BFS-verified (no card photo)."
+  }
+}
