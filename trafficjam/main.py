@@ -97,21 +97,27 @@ class Game:
         return self.puzzles[self.index]["min_moves"]
 
     # -- moves ------------------------------------------------------------
-    def apply_move(self, move):
+    def apply_move(self, move, animate=True):
         v = self.board.vehicles[move.vehicle_id]
         prev = (v.id, v.row, v.col)
         # start offset = (old - new) so it slides from old position
         r0o, c0o = v.row, v.col
         self.board.apply(move)
         nv = self.board.vehicles[v.id]
-        old_px = self.proj.point(r0o, c0o)
-        new_px = self.proj.point(nv.row, nv.col)
-        dx, dy = old_px[0] - new_px[0], old_px[1] - new_px[1]
         win = self.board.solved()
         self.history.append(prev)
         self.move_log.append(move.token())
-        self.anim = Animation(v.id, dx, dy,
-                              WIN_ANIM_DUR if win else MOVE_ANIM_DUR, win=win)
+        if animate:
+            old_px = self.proj.point(r0o, c0o)
+            new_px = self.proj.point(nv.row, nv.col)
+            dx, dy = old_px[0] - new_px[0], old_px[1] - new_px[1]
+            self.anim = Animation(v.id, dx, dy,
+                                  WIN_ANIM_DUR if win else MOVE_ANIM_DUR, win=win)
+        else:
+            # A completed drag is already at its destination — no slide.
+            self.anim = None
+            if win:
+                self.finish_win()
 
     def undo(self):
         if not self.history or self.anim:
@@ -175,9 +181,9 @@ class Game:
                 self.controller.on_motion(self.board, e.pos)
         elif e.type == pygame.MOUSEBUTTONUP and e.button == 1:
             if self.anim is None and self.controller.dragging_id:
-                move = self.controller.on_release(self.board, e.pos)
+                move, is_click = self.controller.on_release(self.board, e.pos)
                 if move is not None:
-                    self.apply_move(move)
+                    self.apply_move(move, animate=is_click)
 
     def _win_events(self, e):
         if e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:

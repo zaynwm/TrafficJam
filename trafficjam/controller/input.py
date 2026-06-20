@@ -100,11 +100,16 @@ class DragController:
         return (vec[0] * self.cur_cells, vec[1] * self.cur_cells)
 
     def on_release(self, board, pos):
-        """Return a Move to apply, or None."""
+        """Return ``(move, is_click)``.
+
+        ``is_click`` is True when the gesture was a click-to-move (which should
+        animate); a completed drag is already at its destination, so it returns
+        ``is_click=False`` and the caller skips the slide animation.
+        """
         vid = self.dragging_id
         self.dragging_id = None
         if vid is None:
-            return None
+            return None, False
         moved_px = math.hypot(pos[0] - self.press_pos[0],
                               pos[1] - self.press_pos[1])
         v = board.vehicles[vid]
@@ -114,13 +119,13 @@ class DragController:
             reach = reachable_positions(board, vid)
             if len(reach) == 1:
                 direction, dist, _r, _c = reach[0]
-                return Move(vid, direction, dist)
-            return None
+                return Move(vid, direction, dist), True
+            return None, True
 
         if self.cur_cells == 0:
-            return None
+            return None, False
         if v.horizontal:
             direction = "R" if self.cur_cells > 0 else "L"
         else:
             direction = "D" if self.cur_cells > 0 else "U"
-        return Move(vid, direction, abs(self.cur_cells))
+        return Move(vid, direction, abs(self.cur_cells)), False

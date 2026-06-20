@@ -64,7 +64,17 @@ def draw_board(surface, proj: IsoProjector, board: Board, *,
                selected_id=None, label=True, font=None,
                drag_offset=None, drag_id=None):
     draw_floor(surface, proj, board)
-    for v in sorted(board.vehicles.values(), key=depth_key):
+
+    def sort_key(v):
+        # Depth grows with screen-y; one cell of motion (in either axis) shifts
+        # screen-y by proj.hh. Folding the moving piece's y-offset into its key
+        # keeps it correctly ordered against its neighbours mid-drag/animation.
+        base = depth_key(v)
+        if drag_id and v.id == drag_id and drag_offset:
+            base += drag_offset[1] / proj.hh
+        return base
+
+    for v in sorted(board.vehicles.values(), key=sort_key):
         offset = drag_offset if (drag_id and v.id == drag_id) else (0, 0)
         draw_vehicle(surface, proj, v,
                      selected=(v.id == selected_id),
