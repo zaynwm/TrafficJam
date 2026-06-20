@@ -7,18 +7,10 @@ from trafficjam.model.board import Board
 from trafficjam.model.moves import Move
 from trafficjam.model.solver import reachable_positions
 from trafficjam.view.iso import IsoProjector
-from trafficjam.view.vehicles_draw import footprint, vehicle_height
+from trafficjam.view.vehicles_draw import projected_hull
 from trafficjam.view.render import depth_key
 
 CLICK_PIXELS = 6  # movement under this counts as a click, not a drag
-
-
-def _roof_polygon(proj: IsoProjector, v):
-    r0, c0, r1, c1 = footprint(v)
-    h = vehicle_height(v.id)
-    pts = [proj.point(r0, c0), proj.point(r0, c1),
-           proj.point(r1, c1), proj.point(r1, c0)]
-    return [(x, y - h) for (x, y) in pts]
 
 
 def _point_in_poly(pt, poly):
@@ -51,7 +43,7 @@ class DragController:
     def vehicle_at(self, board: Board, pos):
         # nearest (drawn last) first
         for v in sorted(board.vehicles.values(), key=depth_key, reverse=True):
-            if _point_in_poly(pos, _roof_polygon(self.proj, v)):
+            if _point_in_poly(pos, projected_hull(self.proj, v)):
                 return v.id
         return None
 

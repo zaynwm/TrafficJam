@@ -13,6 +13,7 @@ from trafficjam.view.menu import Menu
 from trafficjam.view.particles import Fireworks
 from trafficjam.view.render import draw_board
 from trafficjam.view.summary import Summary, score_for
+from trafficjam.view.vehicles_draw import clear_mesh_cache
 
 SCREEN_W, SCREEN_H = 980, 760
 BG = (24, 26, 34)
@@ -81,6 +82,7 @@ class Game:
     # -- level lifecycle --------------------------------------------------
     def load_level(self, idx):
         self.index = idx
+        clear_mesh_cache()
         data = self.puzzles[idx]
         self.board = data["board"].clone()
         self.proj = fit_projector(self.board.rows, self.board.cols,

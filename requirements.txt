@@ -1,5 +1,6 @@
 # Game runtime
 pygame>=2.6
+numpy>=1.24       # vehicle mesh generation + software 3D rendering
 
 # Card-import tool (tools/import_cards.py) — not needed to play
 anthropic>=0.40

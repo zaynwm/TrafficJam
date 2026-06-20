@@ -67,10 +67,13 @@ trafficjam/
     board.py         Board, Vehicle, legal slides, apply/undo, win check
     moves.py         Move dataclass, card-notation parse/format
     solver.py        BFS shortest solution, reachable positions, validation
+  mesh/              generated low-poly vehicle geometry (engine-agnostic)
+    geometry.py      Mesh/MeshBuilder, normals, OBJ + glTF export
+    cars.py          parametric car generator + archetype presets
   view/              rendering
     iso.py           isometric projection + depth sorting
     render.py        floor tiles, exit, depth-sorted vehicles
-    vehicles_draw.py extruded-prism vehicle drawing
+    vehicles_draw.py software-3D pass: project / shade / paint the meshes
     hud.py           move counter, undo/reset/levels buttons, move log
     particles.py     fireworks particle system
     summary.py       win panel + score/stars
@@ -83,6 +86,7 @@ trafficjam/
 
 tools/
   import_cards.py    Claude-vision card importer
+  export_meshes.py   export vehicle meshes to OBJ / glTF
   schema.py          puzzle JSON schema + validation
 
 puzzles/             puzzle dataset (JSON) — every entry BFS-verified
@@ -139,6 +143,31 @@ python -m tools.import_cards --only 1 --dry-run
 ```
 
 Name image pairs `rush-hour-<N>-front.jpg` and `rush-hour-<N>-back.jpg`.
+
+## Vehicle meshes
+
+Vehicles are **procedurally generated low-poly meshes** — no images or
+third-party geometry. Each is built from a small parameter vector (`CarSpec`: a
+side-profile roofline, body width, ride height, glass-cabin range, wheel
+placement) by lofting rounded cross-sections along the body and adding wheels as
+separate cylinders. Archetype presets (sedan, coupe, wedge, hatch, SUV, pickup,
+bus, semi) give silhouettes *evocative of* each vehicle class without copying any
+real, branded design; `palette.py` supplies the colors. PyGame renders them with
+a small software-3D pass (project → flat-shade → painter's sort) through the same
+isometric projection as the board.
+
+The mesh data is engine-agnostic and exports to OBJ and glTF, so the same assets
+can drive a future GPU/SceneKit (iOS) port — convert the glTF to Apple's USDZ
+with Reality Converter.
+
+```bash
+python -m tools.export_meshes --out assets/meshes              # per vehicle (OBJ+glTF)
+python -m tools.export_meshes --archetypes --format gltf       # one per archetype
+```
+
+To restyle a vehicle, edit its archetype in `trafficjam/mesh/cars.py` (or map a
+vehicle id to a different archetype) — the change flows to both the in-game
+render and the exported assets.
 
 ## Development
 
