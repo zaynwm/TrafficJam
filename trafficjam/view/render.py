@@ -61,7 +61,7 @@ def _draw_exit(surface, proj: IsoProjector, board: Board):
 
 
 def draw_board(surface, proj: IsoProjector, board: Board, *,
-               selected_id=None, label=True, font=None,
+               selected_id=None, label_id=None, font=None,
                drag_offset=None, drag_id=None):
     draw_floor(surface, proj, board)
 
@@ -78,4 +78,4 @@ def draw_board(surface, proj: IsoProjector, board: Board, *,
         offset = drag_offset if (drag_id and v.id == drag_id) else (0, 0)
         draw_vehicle(surface, proj, v,
                      selected=(v.id == selected_id),
-                     label=label, font=font, offset=offset or (0, 0))
+                     label=(v.id == label_id), font=font, offset=offset or (0, 0))

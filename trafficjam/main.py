@@ -11,6 +11,7 @@ from trafficjam.view.hud import Hud
 from trafficjam.view.iso import fit_projector
 from trafficjam.view.menu import Menu
 from trafficjam.view.particles import Fireworks
+from trafficjam.model.moves import Move
 from trafficjam.view.render import draw_board
 from trafficjam.view.summary import Summary, score_for
 from trafficjam.view.vehicles_draw import clear_mesh_cache
@@ -107,8 +108,25 @@ class Game:
         self.board.apply(move)
         nv = self.board.vehicles[v.id]
         win = self.board.solved()
-        self.history.append(prev)
-        self.move_log.append(move.token())
+
+        # Coalesce with the immediately-preceding move of the same vehicle: the
+        # log shows one token, the move count / score count it once, and undo
+        # reverts the whole run. A net-zero pair counts as no move at all.
+        if self.history and self.history[-1][0] == v.id:
+            _, gr, gc = self.history[-1]          # group-start (before the run)
+            if (nv.row, nv.col) == (gr, gc):
+                self.history.pop()
+                self.move_log.pop()
+            else:
+                if nv.horizontal:
+                    direction, dist = ("R", nv.col - gc) if nv.col > gc else ("L", gc - nv.col)
+                else:
+                    direction, dist = ("D", nv.row - gr) if nv.row > gr else ("U", gr - nv.row)
+                self.move_log[-1] = Move(v.id, direction, dist).token()
+        else:
+            self.history.append(prev)
+            self.move_log.append(move.token())
+
         if animate:
             old_px = self.proj.point(r0o, c0o)
             new_px = self.proj.point(nv.row, nv.col)
@@ -220,9 +238,15 @@ class Game:
             drag_id = self.controller.dragging_id
             drag_off = self.controller.drag_offset(self.board)
 
+        # label only the vehicle under the cursor, or the one being dragged
+        label_id = None
+        if self.controller:
+            label_id = (self.controller.dragging_id
+                        or self.controller.vehicle_at(self.board, mouse))
+
         draw_board(self.screen, self.proj, self.board,
                    selected_id=self.controller.selected_id if self.controller else None,
-                   label=True, font=self.fonts["label"],
+                   label_id=label_id, font=self.fonts["label"],
                    drag_offset=anim_off or drag_off,
                    drag_id=anim_id or drag_id)
 
