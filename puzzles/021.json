@@ -1,6 +1,6 @@
 {
-  "id": 1,
-  "level": "Beginner",
+  "id": 21,
+  "level": "Advanced",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -11,30 +11,23 @@
   },
   "vehicles": [
     {
-      "id": "A",
-      "row": 0,
-      "col": 0,
-      "len": 2,
-      "orient": "H"
-    },
-    {
       "id": "B",
-      "row": 4,
-      "col": 0,
+      "row": 0,
+      "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "C",
-      "row": 4,
-      "col": 4,
+      "id": "F",
+      "row": 0,
+      "col": 0,
       "len": 2,
       "orient": "H"
     },
     {
       "id": "O",
       "row": 0,
-      "col": 5,
+      "col": 3,
       "len": 3,
       "orient": "V"
     },
@@ -47,15 +40,15 @@
     },
     {
       "id": "Q",
-      "row": 1,
-      "col": 3,
+      "row": 3,
+      "col": 1,
       "len": 3,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "R",
       "row": 5,
-      "col": 2,
+      "col": 3,
       "len": 3,
       "orient": "H"
     },
@@ -68,14 +61,27 @@
     }
   ],
   "printed_solution": [
-    "AR1",
-    "CL3",
+    "PD2",
+    "QR2",
+    "XL1",
+    "BD4",
+    "FR1",
+    "XR1",
+    "PU3",
+    "QL3",
+    "OD1",
+    "FR3",
+    "OU1",
+    "QR3",
+    "PD3",
+    "XL1",
+    "BU4",
+    "XR1",
+    "PU3",
+    "QL3",
+    "RL3",
     "OD3",
-    "PU1",
-    "BU1",
-    "RL2",
-    "QD2",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 21
 }

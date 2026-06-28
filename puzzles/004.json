@@ -1,5 +1,5 @@
 {
-  "id": 3,
+  "id": 4,
   "level": "Beginner",
   "grid": {
     "rows": 6,
@@ -11,39 +11,46 @@
   },
   "vehicles": [
     {
-      "id": "A",
-      "row": 3,
-      "col": 1,
-      "len": 2,
-      "orient": "H"
-    },
-    {
       "id": "B",
       "row": 4,
-      "col": 1,
+      "col": 5,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "C",
-      "row": 5,
+      "id": "H",
+      "row": 3,
       "col": 2,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "O",
-      "row": 2,
-      "col": 3,
+      "row": 0,
+      "col": 0,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "P",
-      "row": 3,
-      "col": 5,
+      "row": 0,
+      "col": 3,
       "len": 3,
       "orient": "V"
+    },
+    {
+      "id": "Q",
+      "row": 3,
+      "col": 3,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "R",
+      "row": 5,
+      "col": 2,
+      "len": 3,
+      "orient": "H"
     },
     {
       "id": "X",
@@ -54,20 +61,15 @@
     }
   ],
   "printed_solution": [
-    "OU2",
-    "PU3",
-    "AR3",
-    "BU1",
-    "CL1",
     "OD3",
-    "XR1",
-    "BU3",
     "XL1",
+    "HU3",
+    "XR1",
     "OU3",
-    "AL3",
-    "OD3",
+    "QL3",
+    "RL2",
     "PD3",
     "XR5"
   ],
-  "min_moves": 14
+  "min_moves": 9
 }

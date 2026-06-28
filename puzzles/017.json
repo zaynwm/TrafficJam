@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 17,
+  "level": "Intermediate",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -20,62 +20,69 @@
     {
       "id": "B",
       "row": 1,
-      "col": 3,
+      "col": 2,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "C",
-      "row": 2,
+      "row": 1,
       "col": 4,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "D",
-      "row": 4,
+      "row": 2,
       "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
-      "row": 4,
-      "col": 4,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "G",
-      "row": 5,
-      "col": 3,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "K",
-      "row": 5,
+      "row": 3,
       "col": 0,
       "len": 2,
       "orient": "H"
     },
     {
+      "id": "G",
+      "row": 4,
+      "col": 5,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "K",
+      "row": 4,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
       "id": "O",
       "row": 0,
-      "col": 3,
+      "col": 1,
       "len": 3,
       "orient": "H"
     },
     {
       "id": "P",
-      "row": 1,
-      "col": 5,
+      "row": 3,
+      "col": 3,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
-      "row": 3,
+      "row": 4,
+      "col": 0,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "R",
+      "row": 5,
       "col": 0,
       "len": 3,
       "orient": "H"
@@ -89,14 +96,30 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
+    "BL1",
+    "GU2",
+    "KU2",
+    "OR2",
+    "PU2",
+    "QR3",
+    "RR3",
+    "DD2",
+    "ER1",
     "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
+    "AD4",
+    "BL1",
+    "EL1",
+    "XL1",
+    "DU4",
+    "ER1",
+    "XR1",
+    "AU2",
+    "QL3",
+    "GD1",
+    "KD1",
+    "RL3",
+    "PD2",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 24
 }

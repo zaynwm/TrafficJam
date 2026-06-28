@@ -1,5 +1,5 @@
 {
-  "id": 2,
+  "id": 9,
   "level": "Beginner",
   "grid": {
     "rows": 6,
@@ -11,72 +11,79 @@
   },
   "vehicles": [
     {
-      "id": "A",
+      "id": "B",
       "row": 0,
-      "col": 0,
+      "col": 2,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
-      "id": "B",
+      "id": "C",
+      "row": 0,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "D",
       "row": 1,
       "col": 3,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "C",
-      "row": 2,
+      "id": "E",
+      "row": 1,
       "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "F",
+      "row": 0,
+      "col": 1,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "D",
+      "id": "G",
       "row": 4,
       "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "E",
+      "id": "H",
       "row": 4,
-      "col": 4,
+      "col": 5,
       "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "G",
-      "row": 5,
-      "col": 3,
-      "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "K",
-      "row": 5,
-      "col": 0,
+      "row": 2,
+      "col": 5,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "O",
-      "row": 0,
-      "col": 3,
+      "row": 2,
+      "col": 4,
       "len": 3,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "P",
-      "row": 1,
-      "col": 5,
+      "row": 3,
+      "col": 0,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
       "row": 3,
-      "col": 0,
+      "col": 1,
       "len": 3,
       "orient": "H"
     },
@@ -89,14 +96,18 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
+    "OD1",
     "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
-    "XR5"
+    "PU3",
+    "QL1",
+    "DD2",
+    "EL1",
+    "XR1",
+    "FD1",
+    "BL1",
+    "CL1",
+    "KU2",
+    "XR4"
   ],
-  "min_moves": 8
+  "min_moves": 12
 }

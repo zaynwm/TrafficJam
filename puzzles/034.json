@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 34,
+  "level": "Expert",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -33,37 +33,37 @@
     },
     {
       "id": "D",
-      "row": 4,
-      "col": 2,
+      "row": 3,
+      "col": 3,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
       "row": 4,
-      "col": 4,
+      "col": 2,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
-      "id": "G",
+      "id": "H",
       "row": 5,
       "col": 3,
       "len": 2,
       "orient": "H"
     },
     {
-      "id": "K",
+      "id": "I",
       "row": 5,
       "col": 0,
       "len": 2,
       "orient": "H"
     },
     {
-      "id": "O",
-      "row": 0,
-      "col": 3,
-      "len": 3,
+      "id": "K",
+      "row": 4,
+      "col": 4,
+      "len": 2,
       "orient": "H"
     },
     {
@@ -81,6 +81,13 @@
       "orient": "H"
     },
     {
+      "id": "R",
+      "row": 0,
+      "col": 3,
+      "len": 3,
+      "orient": "H"
+    },
+    {
       "id": "X",
       "row": 2,
       "col": 0,
@@ -89,14 +96,49 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
+    "CU1",
+    "HR1",
+    "DD1",
+    "QR1",
+    "XR1",
+    "AD3",
+    "RL3",
+    "BU1",
+    "PU1",
+    "QR2",
+    "XL1",
+    "EU3",
+    "IR1",
+    "AD1",
+    "QL3",
+    "DU2",
+    "KL3",
+    "DD2",
+    "BD1",
+    "PD1",
+    "QR1",
+    "RR3",
+    "EU1",
+    "XR1",
+    "AU4",
+    "IL1",
+    "KL1",
+    "XL1",
+    "ED1",
+    "RL1",
+    "PU1",
+    "QR2",
+    "ED3",
+    "QL3",
+    "CD2",
+    "DU1",
+    "HL1",
+    "PD3",
     "XR1",
     "AD1",
-    "OL3",
+    "RL2",
     "BU1",
-    "CU2",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 43
 }

@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 22,
+  "level": "Advanced",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -13,51 +13,58 @@
     {
       "id": "A",
       "row": 0,
-      "col": 0,
+      "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "B",
       "row": 1,
-      "col": 3,
+      "col": 0,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "C",
-      "row": 2,
+      "row": 1,
       "col": 4,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "D",
-      "row": 4,
-      "col": 2,
+      "row": 3,
+      "col": 1,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
-      "row": 4,
+      "row": 3,
       "col": 4,
       "len": 2,
       "orient": "H"
     },
     {
+      "id": "F",
+      "row": 4,
+      "col": 0,
+      "len": 2,
+      "orient": "V"
+    },
+    {
       "id": "G",
-      "row": 5,
-      "col": 3,
+      "row": 4,
+      "col": 2,
       "len": 2,
       "orient": "H"
     },
     {
-      "id": "K",
-      "row": 5,
-      "col": 0,
+      "id": "H",
+      "row": 4,
+      "col": 5,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "O",
@@ -69,34 +76,52 @@
     {
       "id": "P",
       "row": 1,
-      "col": 5,
+      "col": 3,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
-      "row": 3,
-      "col": 0,
+      "row": 5,
+      "col": 1,
       "len": 3,
       "orient": "H"
     },
     {
       "id": "X",
       "row": 2,
-      "col": 0,
+      "col": 1,
       "len": 2,
       "orient": "H"
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
-    "XR1",
-    "AD1",
-    "OL3",
     "BU1",
-    "CU2",
+    "FU1",
+    "GR1",
+    "XL1",
+    "AD3",
+    "XR1",
+    "BD1",
+    "OL3",
+    "PU1",
+    "EL1",
+    "HU2",
+    "GR1",
+    "QR2",
+    "AD1",
+    "DD1",
+    "EL2",
+    "PD2",
+    "CL3",
+    "HU2",
+    "PU2",
+    "ER3",
+    "AU1",
+    "DU1",
+    "QL3",
+    "PD3",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 26
 }

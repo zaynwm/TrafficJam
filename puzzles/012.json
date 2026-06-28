@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 12,
+  "level": "Intermediate",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -19,63 +19,42 @@
     },
     {
       "id": "B",
-      "row": 1,
-      "col": 3,
+      "row": 0,
+      "col": 1,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "C",
-      "row": 2,
-      "col": 4,
-      "len": 2,
-      "orient": "V"
-    },
-    {
-      "id": "D",
-      "row": 4,
-      "col": 2,
-      "len": 2,
-      "orient": "V"
-    },
-    {
-      "id": "E",
       "row": 4,
       "col": 4,
       "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "G",
-      "row": 5,
-      "col": 3,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "K",
-      "row": 5,
-      "col": 0,
-      "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "O",
       "row": 0,
-      "col": 3,
+      "col": 5,
       "len": 3,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "P",
       "row": 1,
-      "col": 5,
+      "col": 2,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
       "row": 3,
+      "col": 3,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "R",
+      "row": 5,
       "col": 0,
       "len": 3,
       "orient": "H"
@@ -89,14 +68,23 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
-    "XR1",
+    "BR2",
+    "PU1",
+    "QL2",
+    "CU3",
+    "QR2",
+    "RR3",
+    "PD3",
+    "BL1",
+    "CU1",
+    "XR3",
     "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
-    "XR5"
+    "BL2",
+    "PU3",
+    "QL1",
+    "RL1",
+    "OD3",
+    "XR3"
   ],
-  "min_moves": 8
+  "min_moves": 17
 }
