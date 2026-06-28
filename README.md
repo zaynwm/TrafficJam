@@ -26,6 +26,9 @@ on.
   and validates every puzzle (and every card import) before it's accepted.
 - **Card importer** — a Claude-vision tool that turns photos of the physical
   game cards into solver-validated puzzle data.
+- **Level editor** — a point-and-click GUI for fixing imported boards against the
+  reference photo; on save it re-solves the board and regenerates the solution,
+  with a headless batch mode for validating/cleaning a whole folder.
 
 ## Install & run
 
@@ -86,6 +89,7 @@ trafficjam/
 
 tools/
   import_cards.py    Claude-vision card importer
+  level_editor.py    GUI board editor + headless batch validator/cleaner
   export_meshes.py   export vehicle meshes to OBJ / glTF
   schema.py          puzzle JSON schema + validation
 
@@ -143,6 +147,66 @@ python -m tools.import_cards --only 1 --dry-run
 ```
 
 Name image pairs `rush-hour-<N>-front.jpg` and `rush-hour-<N>-back.jpg`.
+
+## Editing & fixing boards — the level editor
+
+No importer is perfect: a glare, a shadow, or two same-colored pieces can leave a
+board mis-read and quarantined in `needs_review/`. `tools/level_editor.py` is a
+small PyGame GUI for fixing those boards by hand — paint the correct vehicles
+onto the grid while comparing against the original card photo, and it re-solves
+and re-validates the result on save.
+
+![Level editor](docs/level-editor.png)
+
+The window shows, left to right: a **file list** of every `*.json` in the target
+directory; the **reference photo** (`<stem>.png` next to the JSON, as written by
+the importer); the **editable grid**; and the **palette** of all 16 vehicles —
+each swatch in its true color, labeled with its letter code and type/length.
+Below the palette, a live **validation** panel (overlaps, bounds, lengths) and a
+**solvability** panel show the board's health as you work.
+
+```bash
+pip install pygame                                   # already installed to play
+
+python tools/level_editor.py needs_review            # edit a whole directory
+python tools/level_editor.py needs_review/009.json   # open one file (folder pre-loaded)
+python -m tools.level_editor needs_review            # same, as a module
+```
+
+| Action | How |
+| --- | --- |
+| Select a vehicle brush | Click its swatch in the palette (or **Erase**, or `E`) |
+| Paint / erase a cell | **Left-click** paints the active vehicle; **right-click** erases (drag works) |
+| Move the exit | **Exit row ▲/▼** and the **Side** button |
+| Switch files | Click a file, the **◀ ▶** buttons, or the arrow / `[` `]` keys |
+| Check solvability | **Check** button or `V` (runs the BFS solver, never per-frame) |
+| Save | **Save** button or `Ctrl/⌘+S` |
+
+**On save** the board is rebuilt from the painted cells and run through the same
+BFS solver as the game: if it's solvable, `printed_solution` and `min_moves` are
+overwritten with the optimal solution and the stale quarantine note is dropped;
+if it's unsolvable the solution is cleared and the save is flagged; if the
+geometry is illegal (overlap / out of bounds / wrong length) your edits are kept
+but the solution is left untouched until you fix it.
+
+### Headless mode — batch validate & clean
+
+The same logic runs without a GUI to validate and clean files in bulk —
+regenerate `printed_solution`/`min_moves`, normalize the vehicle list, and strip
+the stale `_validation` quarantine note and the import-time `source` block. It
+accepts a single file or a whole directory, rewrites only files whose cleaned
+content differs, and **exits non-zero** if any file is unsolvable or has geometry
+errors (so it doubles as a CI check):
+
+```bash
+python -m tools.level_editor needs_review --headless          # validate + rewrite in place
+python -m tools.level_editor needs_review/009.json --headless # one file
+python -m tools.level_editor puzzles --dry-run                # report changes, write nothing
+```
+
+Each file is reported as `FIXED` / `WOULD` / `OK` / `WARN` / `ERROR` with a
+summary line, and geometry-error files are reported but left untouched (a broken
+board can't be solved).
 
 ## Vehicle meshes
 
