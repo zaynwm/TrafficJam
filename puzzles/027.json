@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 27,
+  "level": "Advanced",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -11,72 +11,65 @@
   },
   "vehicles": [
     {
-      "id": "A",
+      "id": "B",
+      "row": 0,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "C",
+      "row": 1,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "F",
       "row": 0,
       "col": 0,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "B",
-      "row": 1,
+      "id": "G",
+      "row": 3,
       "col": 3,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
-      "id": "C",
+      "id": "H",
       "row": 2,
-      "col": 4,
+      "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "D",
+      "id": "K",
       "row": 4,
       "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "E",
-      "row": 4,
-      "col": 4,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "G",
-      "row": 5,
-      "col": 3,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "K",
-      "row": 5,
-      "col": 0,
-      "len": 2,
-      "orient": "H"
-    },
-    {
       "id": "O",
       "row": 0,
       "col": 3,
       "len": 3,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "P",
-      "row": 1,
+      "row": 2,
       "col": 5,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
-      "row": 3,
-      "col": 0,
+      "row": 5,
+      "col": 3,
       "len": 3,
       "orient": "H"
     },
@@ -89,14 +82,34 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
+    "PU2",
+    "GR1",
+    "OD2",
+    "BR2",
+    "CR2",
+    "HU2",
     "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
+    "FD4",
+    "XL1",
+    "HD2",
+    "BL3",
+    "CL3",
+    "HU1",
+    "OU2",
+    "GL4",
+    "HD1",
+    "OD2",
+    "CR3",
+    "HU2",
+    "GR1",
+    "XR1",
+    "FU3",
+    "GL1",
+    "KU1",
+    "QL3",
+    "OD1",
+    "PD3",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 28
 }

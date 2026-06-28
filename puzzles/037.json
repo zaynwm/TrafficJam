@@ -1,0 +1,155 @@
+{
+  "id": 37,
+  "level": "Expert",
+  "grid": {
+    "rows": 6,
+    "cols": 6,
+    "exit": {
+      "row": 2,
+      "side": "right"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "A",
+      "row": 0,
+      "col": 0,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "B",
+      "row": 0,
+      "col": 2,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "C",
+      "row": 0,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "D",
+      "row": 1,
+      "col": 0,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "E",
+      "row": 4,
+      "col": 3,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "G",
+      "row": 5,
+      "col": 0,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "H",
+      "row": 5,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "K",
+      "row": 4,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "O",
+      "row": 1,
+      "col": 4,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "P",
+      "row": 1,
+      "col": 5,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "Q",
+      "row": 2,
+      "col": 0,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "R",
+      "row": 3,
+      "col": 1,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "X",
+      "row": 2,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    }
+  ],
+  "printed_solution": [
+    "GR1",
+    "QD1",
+    "XL1",
+    "BD1",
+    "CL2",
+    "OU1",
+    "PU1",
+    "RR2",
+    "BD2",
+    "DR1",
+    "XR1",
+    "QU1",
+    "GL1",
+    "BD1",
+    "RL2",
+    "OD1",
+    "CR1",
+    "AR1",
+    "QU2",
+    "RL1",
+    "EU3",
+    "HL1",
+    "RR1",
+    "QD1",
+    "AL1",
+    "CL1",
+    "OU1",
+    "RR2",
+    "BU1",
+    "GR1",
+    "QD2",
+    "DL1",
+    "XL1",
+    "BU2",
+    "KL2",
+    "RL2",
+    "OD1",
+    "PD3",
+    "CR2",
+    "BU1",
+    "EU1",
+    "XR1",
+    "QU1",
+    "GL1",
+    "HL1",
+    "OD2",
+    "XR5"
+  ],
+  "min_moves": 47
+}

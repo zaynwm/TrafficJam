@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 39,
+  "level": "Expert",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -13,7 +13,7 @@
     {
       "id": "A",
       "row": 0,
-      "col": 0,
+      "col": 2,
       "len": 2,
       "orient": "V"
     },
@@ -27,37 +27,51 @@
     {
       "id": "C",
       "row": 2,
-      "col": 4,
-      "len": 2,
-      "orient": "V"
-    },
-    {
-      "id": "D",
-      "row": 4,
       "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "E",
-      "row": 4,
-      "col": 4,
+      "id": "D",
+      "row": 3,
+      "col": 0,
       "len": 2,
       "orient": "H"
     },
     {
-      "id": "G",
-      "row": 5,
+      "id": "E",
+      "row": 3,
       "col": 3,
       "len": 2,
       "orient": "H"
     },
     {
-      "id": "K",
-      "row": 5,
-      "col": 0,
+      "id": "G",
+      "row": 4,
+      "col": 1,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "H",
+      "row": 4,
+      "col": 2,
       "len": 2,
       "orient": "H"
+    },
+    {
+      "id": "I",
+      "row": 5,
+      "col": 2,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "K",
+      "row": 4,
+      "col": 0,
+      "len": 2,
+      "orient": "V"
     },
     {
       "id": "O",
@@ -67,18 +81,11 @@
       "orient": "H"
     },
     {
-      "id": "P",
-      "row": 1,
+      "id": "R",
+      "row": 2,
       "col": 5,
       "len": 3,
       "orient": "V"
-    },
-    {
-      "id": "Q",
-      "row": 3,
-      "col": 0,
-      "len": 3,
-      "orient": "H"
     },
     {
       "id": "X",
@@ -89,14 +96,56 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
-    "XR1",
+    "HR1",
+    "IR2",
+    "CD2",
     "AD1",
-    "OL3",
-    "BU1",
+    "OL1",
+    "RU2",
+    "ER1",
+    "HR1",
+    "BD3",
+    "EL1",
+    "RD1",
+    "OR1",
+    "AU1",
+    "XR3",
+    "AD1",
+    "OL1",
+    "RU1",
+    "ER1",
+    "DR2",
+    "GU4",
+    "KU4",
+    "DL2",
+    "EL1",
+    "RD1",
+    "OR1",
+    "AU1",
+    "XL3",
+    "AD1",
+    "OL1",
+    "RU1",
+    "ER1",
+    "BU3",
+    "EL1",
+    "RD1",
+    "OR1",
+    "AU1",
     "CU2",
-    "XR5"
+    "HL4",
+    "CD1",
+    "AD1",
+    "IL3",
+    "OL1",
+    "RU1",
+    "ER1",
+    "BD3",
+    "EL1",
+    "RD3",
+    "OR1",
+    "AU1",
+    "XR6"
   ],
-  "min_moves": 8
+  "min_moves": 50
 }

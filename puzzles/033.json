@@ -1,0 +1,141 @@
+{
+  "id": 33,
+  "level": "Expert",
+  "grid": {
+    "rows": 6,
+    "cols": 6,
+    "exit": {
+      "row": 2,
+      "side": "right"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "A",
+      "row": 0,
+      "col": 1,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "B",
+      "row": 0,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "D",
+      "row": 3,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "E",
+      "row": 3,
+      "col": 3,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "F",
+      "row": 4,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "G",
+      "row": 4,
+      "col": 3,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "H",
+      "row": 4,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "I",
+      "row": 3,
+      "col": 0,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "P",
+      "row": 3,
+      "col": 5,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "Q",
+      "row": 5,
+      "col": 0,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "R",
+      "row": 0,
+      "col": 2,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "X",
+      "row": 2,
+      "col": 0,
+      "len": 2,
+      "orient": "H"
+    }
+  ],
+  "printed_solution": [
+    "BL1",
+    "PU3",
+    "ER1",
+    "GU3",
+    "QR1",
+    "ID1",
+    "DL1",
+    "EL2",
+    "HU3",
+    "ER2",
+    "FR3",
+    "GD2",
+    "QR2",
+    "RD3",
+    "BL1",
+    "HU1",
+    "XR3",
+    "AD1",
+    "BL2",
+    "RU3",
+    "DR1",
+    "IU3",
+    "DL1",
+    "RD3",
+    "BR2",
+    "AU1",
+    "IU1",
+    "XL3",
+    "GU1",
+    "RU2",
+    "FL4",
+    "GD1",
+    "RD2",
+    "XR3",
+    "RU1",
+    "QL3",
+    "GD1",
+    "EL1",
+    "PD3",
+    "XR3"
+  ],
+  "min_moves": 40
+}

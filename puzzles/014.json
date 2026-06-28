@@ -1,0 +1,118 @@
+{
+  "id": 14,
+  "level": "Intermediate",
+  "grid": {
+    "rows": 6,
+    "cols": 6,
+    "exit": {
+      "row": 2,
+      "side": "right"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "A",
+      "row": 0,
+      "col": 0,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "B",
+      "row": 0,
+      "col": 2,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "C",
+      "row": 1,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "D",
+      "row": 2,
+      "col": 0,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "E",
+      "row": 2,
+      "col": 1,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "F",
+      "row": 5,
+      "col": 0,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "G",
+      "row": 2,
+      "col": 5,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "H",
+      "row": 4,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "I",
+      "row": 4,
+      "col": 2,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "J",
+      "row": 3,
+      "col": 2,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "K",
+      "row": 2,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "X",
+      "row": 2,
+      "col": 2,
+      "len": 2,
+      "orient": "H"
+    }
+  ],
+  "printed_solution": [
+    "DU1",
+    "EU1",
+    "JL2",
+    "IU1",
+    "FR3",
+    "ID1",
+    "JR2",
+    "DD3",
+    "ED3",
+    "JL2",
+    "XL2",
+    "BD2",
+    "CL4",
+    "BU2",
+    "GU2",
+    "KU2",
+    "XR6"
+  ],
+  "min_moves": 17
+}

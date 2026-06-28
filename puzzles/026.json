@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 26,
+  "level": "Advanced",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -13,40 +13,47 @@
     {
       "id": "A",
       "row": 0,
-      "col": 0,
+      "col": 1,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "B",
       "row": 1,
-      "col": 3,
+      "col": 0,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "C",
-      "row": 2,
-      "col": 4,
+      "row": 1,
+      "col": 3,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "D",
-      "row": 4,
-      "col": 2,
+      "row": 2,
+      "col": 5,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
-      "row": 4,
-      "col": 4,
+      "row": 3,
+      "col": 0,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "G",
+      "row": 4,
+      "col": 5,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "H",
       "row": 5,
       "col": 3,
       "len": 2,
@@ -54,10 +61,10 @@
     },
     {
       "id": "K",
-      "row": 5,
-      "col": 0,
+      "row": 4,
+      "col": 2,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "O",
@@ -69,34 +76,54 @@
     {
       "id": "P",
       "row": 1,
-      "col": 5,
+      "col": 4,
       "len": 3,
       "orient": "V"
     },
     {
-      "id": "Q",
+      "id": "R",
       "row": 3,
-      "col": 0,
+      "col": 1,
       "len": 3,
       "orient": "H"
     },
     {
       "id": "X",
       "row": 2,
-      "col": 0,
+      "col": 1,
       "len": 2,
       "orient": "H"
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
+    "DU1",
+    "ED1",
+    "GU1",
+    "HR1",
+    "RL1",
+    "CD3",
     "XR1",
     "AD1",
     "OL3",
-    "BU1",
-    "CU2",
-    "XR5"
+    "DU1",
+    "PU1",
+    "RR2",
+    "AD3",
+    "RL2",
+    "XL1",
+    "CU4",
+    "HL1",
+    "GD1",
+    "RR3",
+    "EU1",
+    "KU1",
+    "XR1",
+    "AU3",
+    "HL3",
+    "KD1",
+    "RL2",
+    "PD3",
+    "XR4"
   ],
-  "min_moves": 8
+  "min_moves": 28
 }

@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 38,
+  "level": "Expert",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -20,44 +20,44 @@
     {
       "id": "B",
       "row": 1,
+      "col": 1,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "C",
+      "row": 1,
       "col": 3,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "C",
-      "row": 2,
-      "col": 4,
-      "len": 2,
-      "orient": "V"
-    },
-    {
       "id": "D",
-      "row": 4,
+      "row": 2,
       "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
-      "row": 4,
-      "col": 4,
+      "row": 3,
+      "col": 3,
       "len": 2,
       "orient": "H"
     },
     {
       "id": "G",
-      "row": 5,
+      "row": 4,
       "col": 3,
       "len": 2,
       "orient": "H"
     },
     {
       "id": "K",
-      "row": 5,
-      "col": 0,
+      "row": 4,
+      "col": 2,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "O",
@@ -67,18 +67,18 @@
       "orient": "H"
     },
     {
-      "id": "P",
-      "row": 1,
+      "id": "Q",
+      "row": 5,
+      "col": 3,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "R",
+      "row": 2,
       "col": 5,
       "len": 3,
       "orient": "V"
-    },
-    {
-      "id": "Q",
-      "row": 3,
-      "col": 0,
-      "len": 3,
-      "orient": "H"
     },
     {
       "id": "X",
@@ -89,14 +89,54 @@
     }
   ],
   "printed_solution": [
+    "OL1",
+    "RU2",
+    "ER1",
+    "CD1",
+    "BR2",
+    "DU1",
+    "GR1",
+    "KU1",
+    "QL3",
+    "CD2",
     "EL1",
-    "PD2",
+    "RD1",
+    "OR1",
+    "DU1",
     "XR1",
+    "AD3",
+    "XL1",
+    "DD1",
+    "OL1",
+    "RU1",
+    "ER1",
+    "CU1",
+    "QR3",
     "AD1",
-    "OL3",
-    "BU1",
+    "KD1",
+    "DD1",
+    "BL3",
     "CU2",
-    "XR5"
+    "DU1",
+    "EL4",
+    "CD1",
+    "DD1",
+    "BR3",
+    "RD1",
+    "OR1",
+    "DU2",
+    "ER1",
+    "XR1",
+    "AU4",
+    "EL1",
+    "XL1",
+    "KU2",
+    "GL4",
+    "CD1",
+    "KD1",
+    "QL1",
+    "RD2",
+    "XR6"
   ],
-  "min_moves": 8
+  "min_moves": 48
 }

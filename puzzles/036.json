@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 36,
+  "level": "Expert",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -13,68 +13,75 @@
     {
       "id": "A",
       "row": 0,
-      "col": 0,
+      "col": 4,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "B",
       "row": 1,
-      "col": 3,
+      "col": 1,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "C",
-      "row": 2,
-      "col": 4,
+      "row": 1,
+      "col": 2,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "D",
-      "row": 4,
-      "col": 2,
+      "row": 3,
+      "col": 3,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
       "row": 4,
-      "col": 4,
+      "col": 2,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "G",
-      "row": 5,
-      "col": 3,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "K",
       "row": 5,
       "col": 0,
       "len": 2,
       "orient": "H"
     },
     {
+      "id": "K",
+      "row": 4,
+      "col": 4,
+      "len": 2,
+      "orient": "H"
+    },
+    {
       "id": "O",
       "row": 0,
-      "col": 3,
+      "col": 0,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "P",
+      "row": 0,
+      "col": 1,
       "len": 3,
       "orient": "H"
     },
     {
-      "id": "P",
+      "id": "Q",
       "row": 1,
       "col": 5,
       "len": 3,
       "orient": "V"
     },
     {
-      "id": "Q",
+      "id": "R",
       "row": 3,
       "col": 0,
       "len": 3,
@@ -83,20 +90,56 @@
     {
       "id": "X",
       "row": 2,
-      "col": 0,
+      "col": 2,
       "len": 2,
       "orient": "H"
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
+    "CR1",
+    "DD1",
+    "RR1",
+    "OD1",
+    "PL1",
+    "AL1",
+    "QU1",
+    "RR2",
     "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
+    "EU3",
+    "RL1",
+    "QD1",
+    "AR1",
+    "PR1",
+    "OU1",
+    "RL2",
+    "DU1",
+    "GR4",
+    "DD1",
+    "RR1",
+    "OD1",
+    "PL1",
+    "AL1",
+    "QU1",
+    "RR2",
+    "BD3",
+    "ED3",
+    "CL2",
+    "RL1",
+    "QD1",
+    "AR1",
+    "PR1",
+    "OU1",
+    "RL2",
+    "XL2",
+    "DU3",
+    "GL1",
+    "KL1",
+    "QD2",
+    "RR1",
+    "OD1",
+    "PL1",
+    "DU1",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 44
 }

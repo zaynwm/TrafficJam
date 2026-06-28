@@ -1,0 +1,95 @@
+{
+  "id": 19,
+  "level": "Intermediate",
+  "grid": {
+    "rows": 6,
+    "cols": 6,
+    "exit": {
+      "row": 2,
+      "side": "right"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "B",
+      "row": 0,
+      "col": 3,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "D",
+      "row": 2,
+      "col": 1,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "E",
+      "row": 3,
+      "col": 2,
+      "len": 2,
+      "orient": "H"
+    },
+    {
+      "id": "F",
+      "row": 0,
+      "col": 2,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "G",
+      "row": 1,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "K",
+      "row": 3,
+      "col": 4,
+      "len": 2,
+      "orient": "V"
+    },
+    {
+      "id": "O",
+      "row": 4,
+      "col": 1,
+      "len": 3,
+      "orient": "H"
+    },
+    {
+      "id": "X",
+      "row": 2,
+      "col": 2,
+      "len": 2,
+      "orient": "H"
+    }
+  ],
+  "printed_solution": [
+    "DU2",
+    "EL2",
+    "XL2",
+    "FD1",
+    "BL1",
+    "GU1",
+    "KU1",
+    "OR2",
+    "FD3",
+    "ER2",
+    "XR2",
+    "DD4",
+    "BL2",
+    "EL2",
+    "XL2",
+    "FU4",
+    "ER2",
+    "XR2",
+    "DU2",
+    "OL2",
+    "KD1",
+    "XR4"
+  ],
+  "min_moves": 22
+}

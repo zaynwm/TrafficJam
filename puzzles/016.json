@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 16,
+  "level": "Intermediate",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -15,88 +15,101 @@
       "row": 0,
       "col": 0,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "B",
-      "row": 1,
-      "col": 3,
+      "row": 0,
+      "col": 2,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "C",
-      "row": 2,
+      "row": 0,
       "col": 4,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "D",
-      "row": 4,
-      "col": 2,
+      "row": 1,
+      "col": 0,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "E",
-      "row": 4,
-      "col": 4,
+      "row": 1,
+      "col": 2,
       "len": 2,
       "orient": "H"
     },
     {
       "id": "G",
       "row": 5,
-      "col": 3,
-      "len": 2,
-      "orient": "H"
-    },
-    {
-      "id": "K",
-      "row": 5,
       "col": 0,
       "len": 2,
       "orient": "H"
     },
     {
+      "id": "K",
+      "row": 2,
+      "col": 1,
+      "len": 2,
+      "orient": "V"
+    },
+    {
       "id": "O",
       "row": 0,
-      "col": 3,
+      "col": 5,
       "len": 3,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "P",
-      "row": 1,
-      "col": 5,
+      "row": 2,
+      "col": 2,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
       "row": 3,
-      "col": 0,
+      "col": 3,
       "len": 3,
       "orient": "H"
     },
     {
       "id": "X",
       "row": 2,
-      "col": 0,
+      "col": 3,
       "len": 2,
       "orient": "H"
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
-    "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
-    "XR5"
+    "DD2",
+    "EL2",
+    "GR3",
+    "KD2",
+    "PD1",
+    "XL3",
+    "CD1",
+    "BR1",
+    "PU3",
+    "GL1",
+    "QL2",
+    "CD3",
+    "QR2",
+    "KU1",
+    "GL2",
+    "PD3",
+    "XR3",
+    "PU3",
+    "QL1",
+    "OD3",
+    "XR3"
   ],
-  "min_moves": 8
+  "min_moves": 21
 }

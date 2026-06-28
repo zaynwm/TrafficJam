@@ -1,5 +1,5 @@
 {
-  "id": 2,
+  "id": 5,
   "level": "Beginner",
   "grid": {
     "rows": 6,
@@ -15,26 +15,19 @@
       "row": 0,
       "col": 0,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
       "id": "B",
-      "row": 1,
-      "col": 3,
-      "len": 2,
-      "orient": "V"
-    },
-    {
-      "id": "C",
-      "row": 2,
-      "col": 4,
+      "row": 0,
+      "col": 5,
       "len": 2,
       "orient": "V"
     },
     {
       "id": "D",
       "row": 4,
-      "col": 2,
+      "col": 0,
       "len": 2,
       "orient": "V"
     },
@@ -47,15 +40,15 @@
     },
     {
       "id": "G",
-      "row": 5,
-      "col": 3,
+      "row": 2,
+      "col": 5,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "K",
       "row": 5,
-      "col": 0,
+      "col": 4,
       "len": 2,
       "orient": "H"
     },
@@ -64,39 +57,47 @@
       "row": 0,
       "col": 3,
       "len": 3,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "P",
       "row": 1,
-      "col": 5,
+      "col": 0,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
+      "row": 1,
+      "col": 4,
+      "len": 3,
+      "orient": "V"
+    },
+    {
+      "id": "R",
       "row": 3,
-      "col": 0,
+      "col": 1,
       "len": 3,
       "orient": "H"
     },
     {
       "id": "X",
       "row": 2,
-      "col": 0,
+      "col": 1,
       "len": 2,
       "orient": "H"
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
-    "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
+    "AR1",
+    "EL3",
+    "GD1",
+    "KL3",
+    "PU1",
+    "QD2",
+    "RL1",
+    "OD3",
     "XR5"
   ],
-  "min_moves": 8
+  "min_moves": 9
 }

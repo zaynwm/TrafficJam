@@ -1,6 +1,6 @@
 {
-  "id": 2,
-  "level": "Beginner",
+  "id": 20,
+  "level": "Intermediate",
   "grid": {
     "rows": 6,
     "cols": 6,
@@ -11,51 +11,44 @@
   },
   "vehicles": [
     {
-      "id": "A",
-      "row": 0,
-      "col": 0,
+      "id": "B",
+      "row": 1,
+      "col": 1,
       "len": 2,
-      "orient": "V"
+      "orient": "H"
     },
     {
-      "id": "B",
+      "id": "C",
       "row": 1,
       "col": 3,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "C",
-      "row": 2,
-      "col": 4,
-      "len": 2,
-      "orient": "V"
-    },
-    {
-      "id": "D",
+      "id": "E",
       "row": 4,
       "col": 2,
       "len": 2,
       "orient": "V"
     },
     {
-      "id": "E",
-      "row": 4,
-      "col": 4,
+      "id": "F",
+      "row": 0,
+      "col": 0,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
-      "id": "G",
-      "row": 5,
-      "col": 3,
+      "id": "H",
+      "row": 2,
+      "col": 2,
       "len": 2,
-      "orient": "H"
+      "orient": "V"
     },
     {
       "id": "K",
-      "row": 5,
-      "col": 0,
+      "row": 4,
+      "col": 3,
       "len": 2,
       "orient": "H"
     },
@@ -68,15 +61,15 @@
     },
     {
       "id": "P",
-      "row": 1,
+      "row": 2,
       "col": 5,
       "len": 3,
       "orient": "V"
     },
     {
       "id": "Q",
-      "row": 3,
-      "col": 0,
+      "row": 5,
+      "col": 3,
       "len": 3,
       "orient": "H"
     },
@@ -89,14 +82,16 @@
     }
   ],
   "printed_solution": [
-    "EL1",
-    "PD2",
-    "XR1",
-    "AD1",
-    "OL3",
-    "BU1",
-    "CU2",
-    "XR5"
+    "CD1",
+    "BR2",
+    "HU2",
+    "EU2",
+    "KL3",
+    "CD1",
+    "ED1",
+    "QL1",
+    "PD1",
+    "XR6"
   ],
-  "min_moves": 8
+  "min_moves": 10
 }
