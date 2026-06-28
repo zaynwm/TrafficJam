@@ -2,7 +2,7 @@
 
 Implementation plan for a digital Rush Hour clone with an isometric "2.5D" view,
 programmatically-rendered vehicles matching `reference/vehicles.md`, and a
-Claude-vision card-import tool that builds the puzzle dataset from card photos.
+local Ollama-vision card-import tool that builds the puzzle dataset from card photos.
 
 ---
 
@@ -77,14 +77,15 @@ traffic-jam/
       palette.py         # vehicle color/type table
       puzzles.py         # load/validate puzzle JSON dataset
   tools/
-    import_cards.py      # Claude-vision import pipeline (batch)
+    cv_import/           # classical-CV import pipeline (primary)
+    import_cards.py      # local Ollama-vision import pipeline (alternative)
     schema.py            # puzzle JSON schema + validate()
   puzzles/               # 001.json … NNN.json  (generated dataset)
   needs_review/          # imports that failed solver validation
   assets/fonts/          # bundled font
   tests/                 # pytest: model, moves, solver, schema, import round-trip
   reference/             # provided card photos + vehicles.md
-  requirements.txt       # pygame, anthropic, pillow, pytest
+  requirements.txt       # pygame, ollama, pillow, pytest
   PLAN.md
 ```
 
@@ -104,13 +105,15 @@ traffic-jam/
   ],
   "printed_solution": ["RL2","PU1","CU1","HR1","DD1", "...", "XR5"],
   "min_moves": 0,
-  "source": { "front": "reference/rush-hour-34-front.jpg",
-              "back":  "reference/rush-hour-34-back.jpg" }
+  "source": { "image": "reference/cards-photo.jpg",
+              "bbox": { "left": 0.1, "top": 0.1, "right": 0.4, "bottom": 0.6 },
+              "margin": 0.06 }
 }
 ```
-- `printed_solution` = tokens transcribed from the card back (between `▶` and `●`).
-- `min_moves` = BFS optimum computed at import time (the printed solution is *a*
-  solution, not necessarily optimal; scoring uses the BFS par).
+- `printed_solution` = for imports, the BFS-optimal solution the solver computed
+  from the transcribed layout (hand-authored puzzles may instead carry the card's
+  printed tokens). Either way it must replay legally and end with `X` exiting.
+- `min_moves` = BFS optimum computed at import time (the scoring par).
 - `schema.validate()` enforces in-bounds, non-overlapping, exactly one `X`,
   X on the exit row, lengths/orients consistent.
 
@@ -191,30 +194,58 @@ sy = origin_y + (col + row) * (TILE_H / 2)        # TILE_W : TILE_H = 2 : 1
 
 ---
 
-## 10. Card-import tool (`tools/import_cards.py`) — Claude vision
+## 10. Card-import tools — from a photo to puzzle JSON
 
-Builds the puzzle dataset from card photos. **Import-time only** (no API needed to
-play). Recommended model: **`claude-opus-4-8`** for vision accuracy
-(`claude-sonnet-4-6` as a cheaper batch option).
+Builds the puzzle dataset from **a single photo** of one or more cards.
+**Import-time only** (nothing here is needed to play). Two importers, both
+offline, both ending in the same BFS-solver validation gate (solver-unverifiable
+or face-down cards → `needs_review/`).
 
-**Pipeline per card:**
-1. Discover pairs `rush-hour-<N>-front.jpg` / `-back.jpg`; downscale with Pillow.
-2. One Messages-API call with **both images** + a fixed system prompt containing
-   the vehicle legend, the Color-Code letter→color map, and the move-notation key.
-   Ask for **strict JSON**: vehicle placements + ordered solution tokens.
-   - The **back** image is the source of truth: letters are printed on each
-     vehicle (unambiguous placement) and the solution block is right there
-     (`▶ … ●`).
-   - The **front** image cross-checks colors / vehicle types.
-   - Use **prompt caching** on the static legend/instructions to cut cost across
-     the whole deck.
-3. Parse JSON → `schema.validate()`.
-4. **Solver validation:** apply `printed_solution` from the initial layout — every
-   token must be a legal slide and the sequence must end with `X` exiting. Compute
-   `min_moves` via BFS.
-5. Pass → write `puzzles/<NNN>.json`. Fail/mismatch → write to `needs_review/`
-   with a diff of what was inconsistent.
-- Flags: `--only <id>`, `--dry-run`, `--model`, resumable & idempotent.
+### 10a. Classical CV (`tools/cv_import`) — primary
+
+Deterministic OpenCV pipeline; a small local Ollama model (`gemma4:e4b`) reads
+only the printed number + difficulty (and backstops card counting). Stages: detect
+cards (segment + aspect-ratio split of a single card / strip / touching 2-D grid,
+with progressive threshold loosening and an LLM count/arrangement backstop) →
+perspective-rectify upright → **locate the 6×6 grid by its four corners** (each
+corner = vertex with smooth gray wall in 3 quadrants, the textured grid in the
+4th; corners reconciled into the best axis-aligned **square** rectangle so the
+warp is always an orthogonal projection, never skewed) and warp → classify cells
+(occupancy from texture; color sampled with glare/shadow rejection then
+**regularized to a calibrated 16-color codebook** learned from the cards via
+`calibrate_codebook`) → **detect the vivid-red prime `X` by color and snap the
+grid to the exit row if X landed off it** → tile each 4-connected blob into
+straight 2/3-pieces over **color-homogeneous candidates only** (dissimilar colors
+never merge; stray cells flagged) → map to palette → `schema.validate()` + BFS
+solve. Every card
+(pass or review) also gets a side-by-side **understanding `.png`** next to its
+JSON (rectified board | cell classification | parsed pieces). Flags: `--debug`
+(extra per-stage overlays), `--no-ocr`, `--dry-run`, `--out/--review`,
+`--ocr-model/--host`. Geometry + `X` must be exact; non-prime colors are cosmetic.
+Status: corner-anchored grid localization is robust and excludes the wall (which
+previously cost a half-cell of drift); cell classification is best-effort (the
+pale printed pieces sit close to the board gray), so low-confidence cards land in
+review by design.
+
+### 10b. Multimodal LLM (`tools/import_cards.py`) — alternative
+
+Recommended model **`gemma4:26b`** (any vision-capable Ollama tag via `--model`).
+
+**Pipeline (one photo, many cards):**
+1. **Detect** — one Ollama `chat` call on the whole photo (structured-output
+   `format`): per card a normalised `[0,1]` bounding box + `face` (`up`/`down`).
+2. **Crop** — for each face-up card, crop its box from the full-res source
+   (expanded by `--margin`), downscale with Pillow for upload.
+3. **Transcribe** — a second `chat` call per crop with the legend pinned to a
+   **fixed standard color vocabulary** (`LABELS`, e.g. "red car", "blue bus") so
+   colors stay consistent across runs. Strict JSON: each piece's color + row/col/
+   orient, plus the printed puzzle number/level if visible.
+4. **Map & validate** — color → palette id; `schema.validate()`; then the **BFS
+   solver** must solve the board. Its optimal solution is stored as
+   `printed_solution` and its length as `min_moves`.
+5. Pass → write `puzzles/<NNN>.json`. Face-down is skipped; unsolvable / schema-
+   invalid / no-number cards → `needs_review/` with the discrepancy noted.
+- Flags: `--margin`, `--save-crops`, `--dry-run`, `--model`, `--host`.
 - **Bootstrapping:** card 34 is hand-authored first (so game dev isn't blocked),
   then used as the importer's golden test — the tool must reproduce that JSON.
 
@@ -225,14 +256,15 @@ play). Recommended model: **`claude-opus-4-8`** for vision accuracy
 1. **Model + tests** — board, vehicles, moves, legal slides, win check.
 2. **Solver** — BFS shortest path, `reachable_positions`, validation.
 3. **Schema + loader** — hand-author `puzzles/034.json`; `puzzles.py` loader.
-4. **Import tool** — Claude-vision pipeline; regenerate 034 and diff vs. golden.
+4. **Import tool** — local Ollama-vision pipeline; regenerate 034 and diff vs. golden.
 5. **Iso renderer** — projection, floor, exit, vehicle prisms, depth sort (static).
 6. **Interaction + HUD** — drag, click-to-move, undo, counter, move log.
 7. **Win flow** — drive-out tween, fireworks, summary + scoring.
 8. **Menu + polish** — level select, packaging, `requirements.txt`, README.
 
 ## 12. Dependencies (`requirements.txt`)
-`pygame`, `anthropic` (import tool only), `pillow` (image prep), `pytest` (tests).
+`pygame`; import tools only: `opencv-python-headless` (CV importer), `ollama`,
+`pillow`; `pytest` (tests).
 
 ## 13. Key risks / decisions
 - **Vision accuracy** on dense/expert boards → mitigated by solver validation +

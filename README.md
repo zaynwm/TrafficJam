@@ -24,7 +24,7 @@ on.
   **star rating**, and a **score**.
 - **Built-in solver** — a BFS shortest-path solver computes the par for scoring
   and validates every puzzle (and every card import) before it's accepted.
-- **Card importer** — a Claude-vision tool that turns photos of the physical
+- **Card importer** — a local Ollama-vision tool that turns photos of the physical
   game cards into solver-validated puzzle data.
 - **Level editor** — a point-and-click GUI for fixing imported boards against the
   reference photo; on save it re-solves the board and regenerates the solution,
@@ -37,8 +37,9 @@ pip install -r requirements.txt
 python -m trafficjam.main
 ```
 
-Only `pygame` is needed to play. The `anthropic` and `pillow` packages are used
-solely by the card importer.
+Only `pygame` is needed to play. The `opencv-python-headless`, `ollama`, and
+`pillow` packages are used solely by the card importers (which run offline,
+talking to a local Ollama daemon for any text/vision the CV stage doesn't cover).
 
 ## How to play
 
@@ -88,7 +89,8 @@ trafficjam/
     puzzles.py       puzzle JSON loader
 
 tools/
-  import_cards.py    Claude-vision card importer
+  cv_import/         classical-CV card importer (detect→rectify→grid→classify)
+  import_cards.py    local Ollama-vision card importer (alternative)
   level_editor.py    GUI board editor + headless batch validator/cleaner
   export_meshes.py   export vehicle meshes to OBJ / glTF
   schema.py          puzzle JSON schema + validation
@@ -127,26 +129,77 @@ bundled levels `001`–`003` were authored by design and BFS-verified.
 
 ## Importing cards from photos
 
-`tools/import_cards.py` builds the dataset from scans/photos of the physical
-cards using Claude vision (`claude-opus-4-8`). For each card it reads the **back**
-image (the letter-labeled board plus the printed solution) and uses the **front**
-image to cross-check colors against the palette, returns strict JSON, then
-**validates the result with the BFS solver** before writing it. Anything the
-solver can't verify is quarantined to `needs_review/` with the discrepancy noted,
-so the dataset only ever contains winnable, correctly-transcribed puzzles.
+Two importers turn a **single photo** of one or more physical cards into puzzle
+JSON. Both run fully offline and both end with the same safety gate — the **BFS
+solver must solve** each extracted board (storing its optimal solution and
+`min_moves`); face-down cards are skipped and anything that can't be verified (or
+has no detected card number) is quarantined to `needs_review/`, so `puzzles/`
+only ever contains winnable boards.
+
+### Recommended: classical computer vision (`tools/cv_import`)
+
+A deterministic OpenCV pipeline — fast, inspectable, no per-pixel guessing:
+
+1. **Detect** — segment cards from the background and split a single card, a
+   touching row/column, or a touching **2-D grid** into individual cards by the
+   card aspect ratio — every split (auto or hinted) is scored by how close the
+   resulting cards are to a ~1.45 portrait, so a distorted layout is never chosen.
+   Thresholds loosen progressively until the split is clean; if the CV count
+   disagrees with the Ollama model's count, the model's row×col layout is tried
+   too, but adopted only if it keeps the cards well-shaped (LLM backstop).
+2. **Rectify** — perspective-warp each card upright (logo at top).
+3. **Locate the 6×6 grid by its corners** — each grid corner is the vertex where
+   three quadrants are smooth **gray wall** and the fourth is the textured grid
+   (the grayness gate rejects false corners on the white card edge, the colored
+   difficulty band, or the printed number). The four corners are reconciled into
+   the **axis-aligned, square** rectangle that best fits — so the warp is always an
+   orthogonal projection (square cells), never a skewed trapezoid — then warped.
+4. **Classify cells** — occupancy from *texture* (the molded 3-D pieces are busy;
+   the pebble board is smooth). Each cell's color is sampled robustly (white
+   balance + discard specular glare/shadow, then the median of the most-chromatic
+   body pixels) and **regularized to a calibrated 16-color codebook** — the
+   photographed vehicle palette learned by k-means over the reference cards
+   (regenerate with `python -m tools.cv_import.calibrate_codebook`).
+5. **Find the prime X & assemble** — the vivid-red **X** is detected directly by
+   color (and used to snap the grid to the exit row if it landed a row off). The
+   remaining cells are tiled into straight 2/3-length pieces per 4-connected blob,
+   where a candidate piece may only group **color-homogeneous** cells — so two
+   different-colored pieces are never merged into one. Cells that can't be tiled
+   (occupancy noise / dissimilar colors) are flagged for review.
+6. **Read text** — only the card number + difficulty go to a small local Ollama
+   model (`gemma4:e4b`); everything else is pure CV.
+
+For **every** card (passing or quarantined) a `.png` is written next to its JSON
+showing the system's understanding — the rectified board, the per-cell
+classification, and the parsed pieces side by side — so you can eyeball
+correctness at a glance.
 
 ```bash
-export ANTHROPIC_API_KEY=...          # import-time only; never needed to play
-pip install anthropic pillow
+pip install opencv-python-headless ollama   # import-time only; never needed to play
+ollama pull gemma4:e4b                       # one-time; for reading number/difficulty
 
-# Import every rush-hour-<N>-front/back pair found in cards/
-python -m tools.import_cards --dir cards --out puzzles --review needs_review
-
-# Dry-run a single card without writing files
-python -m tools.import_cards --only 1 --dry-run
+python -m tools.cv_import photo.jpg --out puzzles --review needs_review
+python -m tools.cv_import photo.jpg --debug /tmp/cvdbg --dry-run   # extra per-stage overlays
+python -m tools.cv_import photo.jpg --no-ocr                       # skip number/difficulty
 ```
 
-Name image pairs `rush-hour-<N>-front.jpg` and `rush-hour-<N>-back.jpg`.
+Each result's `.png` (e.g. `puzzles/001.png`, `needs_review/<name>.png`) is the
+quickest way to verify; `--debug DIR` adds per-stage overlays (card detection,
+rectified cards with the detected grid corners) for tuning against your photos.
+
+### Alternative: multimodal LLM (`tools/import_cards.py`)
+
+Sends the photo to a **local Ollama vision model** (default `gemma4:26b`) to
+detect/crop cards and transcribe each board by a fixed color vocabulary:
+
+```bash
+pip install ollama pillow
+ollama pull gemma4:26b                       # vision-capable model
+
+python -m tools.import_cards photo.jpg --out puzzles --review needs_review
+python -m tools.import_cards photo.jpg --margin 0.08 --save-crops /tmp/crops
+python -m tools.import_cards photo.jpg --model gemma4:26b --host http://localhost:11434 --dry-run
+```
 
 ## Editing & fixing boards — the level editor
 
