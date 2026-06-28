@@ -2,8 +2,13 @@
 pygame>=2.6
 numpy>=1.24       # vehicle mesh generation + software 3D rendering
 
-# Card-import tool (tools/import_cards.py) — not needed to play
-anthropic>=0.40
+# Card-import tools — not needed to play.
+# tools/cv_import: classical computer-vision importer (recommended).
+opencv-python-headless>=4.8   # card detect/rectify/grid + cell classification
+# tools/import_cards.py: original multimodal-LLM importer (kept as-is).
+# Both read card number/difficulty (and the LLM importer the whole board) from a
+# local Ollama daemon; fully offline (ollama pull gemma4:26b / gemma4:e4b).
+ollama>=0.3
 pillow>=10
 
 # Tests

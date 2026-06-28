@@ -1,0 +1,17 @@
+For each playing card in this image, please tell me which rectangular colored objects occupy which cells on the 6x6 grid shown on the card, which positions they are at, and which card number is on that card.  Colored playing pieces shown on the grid may only be a single color occupying only two or three grid squares in a single row or column.  The grid is numbered from the top-left corner as (0,0), with the top right corner as (5,0) and the bottom left as (0,5).  The bottom right corner is therefor (5,5).  There may be up to 16 pieces on this grid, and those pieces have the following descriptions:
+- Red, two grid-squares long
+- Light green, two grid-squares long
+- Orange, two grid-squares long
+- Light blue, two grid-squares long
+- Light pink, two grid-squares long
+- Purple, two grid-squares long
+- Medium green, two grid-squares long
+- Dark gray, two grid-squares long
+- Taupe, two grid-squares long
+- Yellow, two grid-squares long
+- White, two grid-squares long
+- Dark green, two grid-squares long
+- Dark yellow, three grid-squares long
+- Light purple, three grid-squares long
+- Dark blue, three grid-squares long
+- Green, three grid-squares long
